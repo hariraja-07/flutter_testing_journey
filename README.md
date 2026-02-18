@@ -41,4 +41,19 @@ Imagine you're the creator of a big e-commerce application. With **manual testin
 
 With **automated testing**, application components are written along with tests for known bugs — solving all these demerits.
 
-> *"That's why we need to know automated testing now — Avengers, assemble!"* 
+> *"That's why we need to know automated testing now — Avengers, assemble!"*
+
+## Types of Automated Testing 
+
+Flutter supports three levels of automated testing.
+
+- Unit Tests 
+- Widget Tests 
+- Integration Tests 
+
+### 1) Unit Tests 
+
+A unit test is a test that verifies the behaviour of an **isolated piece of code** - a single function, method or class. No Flutter framework, no real database , no network calls. Just pure logic.
+
+> *"Waiting for a punchy quote? It's literally just testing a single unit, my lord."*
+
