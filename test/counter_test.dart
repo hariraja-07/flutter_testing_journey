@@ -16,4 +16,20 @@ void main(){
       expect(value,0);
     }
   );
+
+  // given when then
+  test(
+    'given counter at 0 when increment is called once then count should be 1',
+    (){
+      //Arrange - setup 
+      final Counter counter = Counter();
+
+      //Act - execute 
+      counter.increment();
+      final value = counter.count;
+
+      //Assert - verify 
+      expect(value, 1);
+    }
+  );
 }
