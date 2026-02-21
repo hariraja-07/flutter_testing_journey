@@ -1,67 +1,76 @@
+import 'dart:math';
 import 'package:flutter/material.dart';
-import 'package:flutter_testing_journey/counter.dart';
+import 'package:http/http.dart' as http;
+import 'user_model.dart';
+import 'user_repository.dart';
 
-void main() {
+void main(){
   runApp(const MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatelessWidget{
   const MyApp({super.key});
 
-  @override
-  Widget build(BuildContext context) {
+  @override  
+  Widget build(BuildContext context){
     return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        colorScheme: .fromSeed(seedColor: Colors.deepPurple),
-      ),
-      home: const MyHomePage(title: 'Flutter Testing'),
+      title: 'Random User',
+      home: UserScreen(repository: UserRepository(client: http.Client() , random: Random())),
       debugShowCheckedModeBanner: false,
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
+class UserScreen extends StatefulWidget{
+  final UserRepository repository;
 
-  final String title;
+  const UserScreen({super.key, required this.repository});
 
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  @override  
+  State<UserScreen> createState() => _UserScreenState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
-  final Counter counter = Counter();
+class _UserScreenState extends State<UserScreen>{
+  User? user;
+  bool isLoading = false;
 
-  void _incrementCounter() {
+  Future<void> _fetchUser() async{
     setState(() {
-      counter.increment();
+      isLoading = true;
     });
+
+    try {
+      final fetchedUser = await widget.repository.getRandomUser();
+      setState(() {
+        user = fetchedUser;
+        isLoading = false;
+      });
+    }catch(e){
+      setState(() {
+        isLoading = false;
+      });
+    }
   }
 
-  @override
-  Widget build(BuildContext context) {
+  @override  
+  Widget build(BuildContext context){
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text(widget.title),
+        title: const Text('Random User'),
+        centerTitle: true,
       ),
       body: Center(
         child: Column(
-          mainAxisAlignment: .center,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Text('You have pushed the button this many times:'),
-            Text(
-              '${counter.count}',
-              style: Theme.of(context).textTheme.headlineMedium,
-            ),
+            if(isLoading) const CircularProgressIndicator(),
+            if(user != null) Text(user.toString()),
+            ElevatedButton(
+              onPressed: isLoading ? null : _fetchUser, 
+              child: const Text("Get Random User")
+            ),            
           ],
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
       ),
     );
   }
