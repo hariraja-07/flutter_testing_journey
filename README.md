@@ -1,59 +1,96 @@
-# Flutter Testing Journey 
+# Flutter Testing Journey
 
 Learning Flutter unit, widget, and integration testing.
 
-## Testing
-Testing is the process of verifying that application components function as intended - without crashing, producing errors, or exhibiting any unintended behavior.
+---
 
-> *"When you don't test your code, your code tests your sanity."*
-> — **Definitely not Ancient proverb**
+## Testing
+
+Testing is the process of verifying that application components function as intended —  
+without crashing, producing errors, or exhibiting any unintended behavior.
+
+> *"When you don't test your code, your code tests your sanity."*  
+> — **Definitely not an ancient proverb**
+
+---
 
 ## Types of Testing
 
-There are two types of testing methods.
+There are two main testing methods.
 
 ### 1) Manual Testing
 
 This method involves finding and resolving bugs in your Flutter application yourself.
 
-> *"In manual testing, Superman is born — with his superpower, he detects and destroys all the bugs... until Batman is seen at 3 AM."*
+> *"In manual testing, Superman is born — with his superpower, he detects and destroys all the bugs… until Batman is seen at 3 AM."*
+
+---
 
 ### 2) Automated Testing
 
-Automated testing is a way to prevent the software from **expected bugs**.
+Automated testing helps prevent **known and expected bugs**.
 
-> *"In automated testing, the software has bugs — but it does not have **expected** bugs. It's that simple."*
+> *"In automated testing, the software has bugs — but it does not have expected bugs. It's that simple."*
+
+---
 
 ## Why Manual Testing over Automated Testing
 
-> *"Nothing to see here... seriously, skip this."*
+> *"Nothing to see here… seriously, skip this."*
 
-## Why Automated Testing over Manual Testing 
+> *"Just kidding — manual testing is useful in edge cases, but it should never be your only strategy."*
 
+---
 
-Imagine you're the creator of a big e-commerce application. With **manual testing**, you need:
+## Why Automated Testing over Manual Testing
 
-- A team of testers
-- Big salaries
-- Less productivity
-- Error-prone results
-- Time-consuming processes
+Imagine you're the creator of a large e-commerce application.
 
-With **automated testing**, application components are written along with tests for known bugs — solving all these demerits.
+With **manual testing**, you need:
+- A team of testers  
+- Big salaries  
+- Lower productivity  
+- Error-prone results  
+- Time-consuming processes  
 
-> *"That's why we need to know automated testing now — Avengers, assemble!"*
+With **automated testing**, application components are written alongside tests for known bugs — eliminating most of these issues.
 
-## Types of Automated Testing 
+> *"That's why we need automated testing now — Avengers, assemble!"*
 
-Flutter supports three levels of automated testing.
+---
 
-- Unit Tests 
-- Widget Tests 
-- Integration Tests 
+## Types of Automated Testing
 
-### 1) Unit Tests 
+Flutter supports three levels of automated testing:
+- Unit Tests  
+- Widget Tests  
+- Integration Tests  
 
-A unit test is a test that verifies the behaviour of an **isolated piece of code** - a single function, method or class. No Flutter framework, no real database , no network calls. Just pure logic.
+---
+
+### 1) Unit Tests
+
+A unit test verifies the behavior of an **isolated piece of code** — a single function, method, or class.
+
+No Flutter framework.  
+No real database.  
+No network calls.  
+Just pure logic.
 
 > *"Waiting for a punchy quote? It's literally just testing a single unit, my lord."*
 
+---
+
+### 2) Widget Tests
+
+A widget test verifies the **UI** of the application by building widgets, tapping buttons, and checking what appears on the screen — all without a real device.
+
+> *"Sad that after this you don’t need your dear friend to test your application UI :/"*
+
+---
+
+### 3) Integration Tests
+
+Integration tests verify the **entire app flow** — from UI interactions to backend communication — on a real device or emulator.
+
+> *"This is where your app stops lying and proves it actually works."*
